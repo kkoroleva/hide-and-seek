@@ -252,6 +252,7 @@ class searchItem {
         this._removeItem();
         findCounter++;
         if (findCounter == 15) {
+                findCounter = 0;
             instructions.hidden = false;
             //if (!startButton.hidden) {
                 startButton.hidden = true;
