@@ -289,7 +289,8 @@ const spots = freeSpots.length;
 
 fieldFirstCheck();
 
-function renderItems () {
+function renderItems (evt) {
+    evt.preventDefault();
     let playableItems = [];
     itemList.innerHTML = "";
     instructions.hidden = true;
