@@ -136,7 +136,7 @@ const fieldWidth = 1200; //Ширина игрового поля
 const fieldHeight = 600; //Высота игрового поля
 
 //Отсюда и дальше технический код. НЕ МЕНЯТЬ без специалиста
-const getRandomInt = (min = 0, max) => {
+function getRandomInt (min = 0, max) {
     if (min >= max || min < 0 || max < 0) {
         return 'Error. Некорректные входные данные';
     }
@@ -145,11 +145,11 @@ const getRandomInt = (min = 0, max) => {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 };
 
-const getRandomArrayElement = (array) => {
+function getRandomArrayElement (array) {
     return array[getRandomInt(0, array.length - 1)];
 };
 
-const getRandomArray = (refArray) => {
+function getRandomArray (refArray) {
     let resultArray = refArray.slice();
     for (let i = 0; i < resultArray.length - 1; i++) {
         const randIndex = getRandomInt(0, resultArray.length - 1);
@@ -161,13 +161,13 @@ const getRandomArray = (refArray) => {
     return resultArray.slice(0, itemsPerRound);
 };
 
-const createDOMElement = (template) => {
+function createDOMElement (template) {
     const newElement = document.createElement('div');
     newElement.innerHTML = template;
     return newElement.firstChild;
 };
 
-const renderBlock = (component, container) => {
+function renderBlock (component, container) {
     if (container instanceof searchItem) {
         container = container.getElement();
     }
@@ -178,11 +178,11 @@ const renderBlock = (component, container) => {
     container.append(component);
 };
 
-const findFreeSpot = (arr, index) => {
+function findFreeSpot (arr, index) {
     return parseInt(arr.splice(index, 1));
 };
 
-const fieldFirstCheck = () => {
+function fieldFirstCheck () {
     if (temp.reduce((acc, cur) => acc + cur) > field.offsetWidth * field.offsetHeight) {
         alert('Предметы в списке поиска слишком большие. Не поместятся на экран');
     }
@@ -252,7 +252,7 @@ class searchItem {
         this._removeItem();
         findCounter++;
         if (findCounter == 15) {
-                findCounter = 0;
+            findCounter = 0;
             instructions.hidden = false;
             //if (!startButton.hidden) {
                 startButton.hidden = true;
@@ -289,7 +289,7 @@ const spots = freeSpots.length;
 
 fieldFirstCheck();
 
-const renderItems = () => {
+function renderItems () {
     let playableItems = [];
     itemList.innerHTML = "";
     instructions.hidden = true;
@@ -303,7 +303,3 @@ const renderItems = () => {
 
 startButton.addEventListener('click', renderItems);
 //restartButton.addEventListener('click', renderItems);
-
-
-
-
